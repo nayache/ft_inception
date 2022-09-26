@@ -17,7 +17,7 @@ re:
 	docker-compose -f srcs/docker-compose.yml up --build
 
 clear_volumes_dir:
-	sudo rm -rf /data/wordpress /data/mariadb;
+	rm -rf /home/nayache/data/wordpress /home/nayache/data/mariadb
 
 clean:
 	docker stop $$(docker ps -qa);\
@@ -28,12 +28,12 @@ clean:
 
 fclean: clear_volumes_dir clean
 
-volumes_dir: /data/wordpress /data/mariadb
+volumes_dir: home/nayache/data/wordpress /home/nayache/data/mariadb
 
-/data/wordpress:
-	sudo mkdir -p /data/wordpress
+/mnt/nfs/homes/nayache/data/wordpress:
+	mkdir -p /home/nayache/data/wordpress
 
-/data/mariadb:
-	sudo mkdir -p /data/mariadb
+/mnt/nfs/homes/nayache/data/mariadb:
+	mkdir -p /home/nayache/data/mariadb
 
 .PHONY: all re down clean
